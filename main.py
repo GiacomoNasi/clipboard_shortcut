@@ -11,10 +11,17 @@ pressed_keys = set()
 
 def on_key_event(event, log_key_pressed=False):
     global pressed_keys
+
+    # Remove keys that are no more down
+    for key in {*pressed_keys}:
+        if not keyboard.is_pressed(key):
+            pressed_keys.discard(key)
+
+    # Add key on key down event
     if event.event_type == 'down':
         pressed_keys.add(event.name)
-    if event.event_type == 'up':
-        pressed_keys.discard(event.name)
+
+
 
     if log_key_pressed:
         print(pressed_keys or {})
