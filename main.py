@@ -29,6 +29,8 @@ def on_key_event(event, log_key_pressed=False):
 
 
 if __name__ == '__main__':
+    """ If the first argument is 'log', it will print key pressed state
+    """
     try:
         log = sys.argv[1] == 'log'
     except IndexError:
